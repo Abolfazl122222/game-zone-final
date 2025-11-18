@@ -19,7 +19,7 @@
                 <li><a href="index.php">صفحه اصلی</a></li>
                 <li><a href="main.php">بازی‌ها</a></li>
                 <li><a href="about.php">درباره ما</a></li>
-                <li><a href="contact.php">ارتباط با ما</a></li>
+                <li><a href="login.php">ورود</a></li>
             </ul>
         </nav>
     </header>
