@@ -6,7 +6,7 @@ body {
 }
 
 .login-container {
-  width: 360px;
+  width: min(420px, 90%);
   margin: 120px auto;
   background: #1a1a1a;
   padding: 30px;
@@ -51,4 +51,20 @@ body {
 
 .login-container button:hover {
   background: #cc33ff;
+}
+
+.alert {
+  background: rgba(255, 0, 120, 0.15);
+  border: 1px solid rgba(255, 0, 120, 0.4);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  color: #ffb3d9;
+  font-size: 14px;
+}
+
+.login-help {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #aaa;
 }

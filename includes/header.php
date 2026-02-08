@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once __DIR__ . '/auth.php';
+$user = current_user();
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/header.css">
-</head>
+<header>
+    <div class="logo">
+        <a href="index.php">GameZone</a>
+    </div>
 
-<body>
-    <header>
-        <div class="logo">
-            <a href="gamesitefinal/index.php">GameZone</a>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="index.php">صفحه اصلی</a></li>
-                <li><a href="main.php">بازی‌ها</a></li>
-                <li><a href="about.php">درباره ما</a></li>
+    <nav>
+        <ul>
+            <li><a href="index.php">صفحه اصلی</a></li>
+            <li><a href="main.php">بازی‌ها</a></li>
+            <li><a href="about.php">درباره ما</a></li>
+            <?php if ($user): ?>
+                <?php if (is_admin()): ?>
+                    <li><a href="admin.php">مدیریت</a></li>
+                <?php endif; ?>
+                <li><a href="logout.php">خروج</a></li>
+            <?php else: ?>
                 <li><a href="login.php">ورود</a></li>
-            </ul>
-        </nav>
-    </header>
-</body>
-
-</html>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
