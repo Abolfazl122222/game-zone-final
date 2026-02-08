@@ -1,12 +1,18 @@
 <?php
-require_once __DIR__ . '/includes/games.php';
+require_once __DIR__ . '/includes/db.php';
 
 $slug = $gameSlug ?? ($_GET['game'] ?? '');
 $slug = is_string($slug) ? strtolower(trim($slug)) : '';
 
-$game = $games[$slug] ?? null;
+$stmt = $pdo->prepare('SELECT * FROM games WHERE slug = :slug LIMIT 1');
+$stmt->execute(['slug' => $slug]);
+$game = $stmt->fetch();
 
-if (!$game) {
+if ($game) {
+    $game['story'] = json_decode($game['story'], true) ?: [];
+    $game['features'] = json_decode($game['features'], true) ?: [];
+    $game['gallery'] = json_decode($game['gallery'], true) ?: [];
+} else {
     http_response_code(404);
 }
 ?>
