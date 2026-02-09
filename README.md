@@ -18,6 +18,7 @@
    - لیست بازی‌ها: `http://localhost/game-zone-final/main.php`
    - پنل مدیریت: `http://localhost/game-zone-final/admin.php`
    - صفحه ورود: `http://localhost/game-zone-final/login.php`
+   - نمایش جزئیات: `http://localhost/game-zone-final/game.php?game=slug`
 
 اطلاعات ورود پیش‌فرض مدیر:
 `admin@gamezone.local / admin123`
