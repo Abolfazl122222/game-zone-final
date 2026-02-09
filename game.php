@@ -12,6 +12,8 @@ if ($game) {
     $game['story'] = json_decode($game['story'], true) ?: [];
     $game['features'] = json_decode($game['features'], true) ?: [];
     $game['gallery'] = json_decode($game['gallery'], true) ?: [];
+    $game['min_requirements'] = array_filter(array_map('trim', explode("\n", $game['min_requirements'] ?? '')));
+    $game['rec_requirements'] = array_filter(array_map('trim', explode("\n", $game['rec_requirements'] ?? '')));
 } else {
     http_response_code(404);
 }
@@ -70,6 +72,34 @@ if ($game) {
         <?php foreach ($game['gallery'] as $image): ?>
           <img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($game['title'], ENT_QUOTES, 'UTF-8'); ?>">
         <?php endforeach; ?>
+      </div>
+    </section>
+  <?php endif; ?>
+
+  <?php if (!empty($game['min_requirements']) || !empty($game['rec_requirements'])): ?>
+    <section class="requirements">
+      <h2>سیستم مورد نیاز</h2>
+      <div class="requirements-grid">
+        <?php if (!empty($game['min_requirements'])): ?>
+          <div class="requirements-card">
+            <h3>حداقل سیستم</h3>
+            <ul>
+              <?php foreach ($game['min_requirements'] as $line): ?>
+                <li><?php echo htmlspecialchars($line, ENT_QUOTES, 'UTF-8'); ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        <?php endif; ?>
+        <?php if (!empty($game['rec_requirements'])): ?>
+          <div class="requirements-card">
+            <h3>سیستم پیشنهادی</h3>
+            <ul>
+              <?php foreach ($game['rec_requirements'] as $line): ?>
+                <li><?php echo htmlspecialchars($line, ENT_QUOTES, 'UTF-8'); ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        <?php endif; ?>
       </div>
     </section>
   <?php endif; ?>

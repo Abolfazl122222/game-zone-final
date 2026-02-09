@@ -1,6 +1,15 @@
 CREATE DATABASE IF NOT EXISTS game_zone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE game_zone;
 
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  role VARCHAR(20) NOT NULL DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS games (
   id INT AUTO_INCREMENT PRIMARY KEY,
   slug VARCHAR(50) NOT NULL UNIQUE,
@@ -13,10 +22,16 @@ CREATE TABLE IF NOT EXISTS games (
   features JSON NULL,
   gallery JSON NULL,
   video_link VARCHAR(255) NULL,
+  content_type VARCHAR(20) NOT NULL DEFAULT 'game',
+  min_requirements TEXT NULL,
+  rec_requirements TEXT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO games (slug, title, cover, short_description, genre, rating, story, features, gallery, video_link)
+INSERT INTO users (name, email, password_hash, role)
+VALUES ('مدیر سایت','admin@gamezone.local','$2y$12$5B1CyBQrRk5twEv.EEAmRurV9dbxj//ssv97JDbOPlHkNTpIY5gNq','admin');
+
+INSERT INTO games (slug, title, cover, short_description, genre, rating, story, features, gallery, video_link, content_type, min_requirements, rec_requirements)
 VALUES
 ('rdr2','Red Dead Redemption 2','images/rdr2.jpg','داستان Red Dead Redemption 2 در سال ۱۸۹۹ و در غرب وحشی جریان دارد. RDR2 در واقع پیش درآمدی بر داستان بازی اول است و زندگی آرتور مورگان را شرح می‌دهد.','اکشن | ماجراجویی | وسترن','9.8/10',
  JSON_ARRAY(
@@ -33,12 +48,16 @@ VALUES
   'موسیقی فوق‌العاده حماسی و احساسی'
  ),
  JSON_ARRAY('images/RDR2Screenshot.jpg','images/RDR2Screenshot2.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel Core i5-2500K / AMD FX-6300\nRAM: 8GB\nGPU: Nvidia GeForce GTX 770 2GB / AMD Radeon R9 280 3GB\nStorage: 150GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel Core i7-4770K / AMD Ryzen 5 1500X\nRAM: 12GB\nGPU: Nvidia GeForce GTX 1060 6GB / AMD Radeon RX 480 4GB\nStorage: 150GB'),
 ('gtavi','GTA VI','images/gta.jpg','یک بازی جهان‌باز با داستانی جذاب و گرافیکی فوق‌العاده که در شهر Los Santos جریان دارد.','اکشن | جهان باز','9.5/10',
  JSON_ARRAY('GTA VI جدیدترین نسخه از سری محبوب Grand Theft Auto است که در شهری با گرافیک نسل جدید جریان دارد. این بازی یک تجربه جهان‌باز کامل با مأموریت‌های داستانی، رانندگی، تیراندازی و آزادی عمل گسترده ارائه می‌دهد.'),
  JSON_ARRAY(),
  JSON_ARRAY('images/screengta2.jpg','images/screengta.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel Core i5-8400 / AMD Ryzen 5 2600\nRAM: 8GB\nGPU: GTX 1060 / RX 580\nStorage: 120GB',
+ 'OS: Windows 11 64-bit\nCPU: Intel Core i7-10700 / AMD Ryzen 7 3700X\nRAM: 16GB\nGPU: RTX 2070 / RX 5700 XT\nStorage: 120GB'),
 ('gow','God of War','images/godofwar.jpg','کریتوس و پسرش در سفری اسطوره‌ای میان دنیای خدایان نورس؛ اکشن، احساس و داستان عمیق.','اکشن | اسطوره‌ای','9.7/10',
  JSON_ARRAY(
   'نسخه جدید God of War ادامه‌ای بر داستان کریتوس است که این بار همراه پسرش آترئوس وارد سفری عمیق و احساسی در دنیای خدایان نورس می‌شود. بازی ترکیبی از مبارزات نفس‌گیر، روایت سینمایی و گرافیک باورنکردنی است که تجربه‌ای متفاوت برای بازیکنان رقم می‌زند.',
@@ -54,7 +73,9 @@ VALUES
   'موسیقی متن حماسی و فضاساز'
  ),
  JSON_ARRAY('images/gowscreen3.jpg','images/gow3.jpeg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-2500K / AMD Ryzen 3 1200\nRAM: 8GB\nGPU: GTX 960 / R9 290X\nStorage: 70GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-4770K / AMD Ryzen 7 2700X\nRAM: 16GB\nGPU: GTX 1060 6GB / RX 570\nStorage: 70GB'),
 ('fc25','FC 25','images/fifa25.jpg','جدیدترین نسخه از بازی فوتبال محبوب با گیم‌پلی بهبود یافته و گرافیکی واقعی‌تر از همیشه.','ورزشی','9.1/10',
  JSON_ARRAY(
   'بازی <strong>EA Sports FC 25</strong> جدیدترین نسخه از سری فوتبال محبوب EA است که پس از جدایی از برند فیفا، هویت مستقل خود را تثبیت کرده است. این عنوان با موتور قدرتمند <em>Frostbite</em> و تکنولوژی انیمیشن جدید <strong>HyperMotion V</strong> تجربه‌ای واقع‌گرایانه‌تر از همیشه ارائه می‌دهد.',
@@ -69,7 +90,9 @@ VALUES
   'گیم‌پلی سریع‌تر و طبیعی‌تر در تمام پلتفرم‌ها'
  ),
  JSON_ARRAY('images/fc25screen1.jpg','images/eafc25_09_2.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-6600K / AMD Ryzen 5 1600\nRAM: 8GB\nGPU: GTX 1050 Ti / RX 570\nStorage: 50GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-6700 / AMD Ryzen 7 2700X\nRAM: 16GB\nGPU: GTX 1660 / RX 5600 XT\nStorage: 50GB'),
 ('last2','The Last of Us Part II','images/the lastofus.jpg','داستان بازی The Last of Us در سال ۲۰۳۳ و بیست سال بعد از یک شیوع قارچی که نزدیک به ۶۰ درصد جمعیت دنیا را آلوده کرد، جریان دارد.','اکشن | بقا | داستان‌محور','9.6/10',
  JSON_ARRAY(
   'The Last of Us Part II دنباله‌ای بر داستان الی و جوئل است و چند سال پس از وقایع نسخه اول اتفاق می‌افتد. روایت پیچیده، تلخ و احساسی بازی، بازیکنان را در سفری پر از انتقام، تضادهای اخلاقی و تصمیم‌های دشوار قرار می‌دهد.',
@@ -85,7 +108,9 @@ VALUES
   'موسیقی متفاوت و احساسی ساخته گوستاوو سانتائولایا'
  ),
  JSON_ARRAY('images/last2of.jpg','images/ellie.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-8400 / AMD Ryzen 5 2600\nRAM: 8GB\nGPU: GTX 1060 / RX 580\nStorage: 100GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-9700K / AMD Ryzen 7 3700X\nRAM: 16GB\nGPU: RTX 2060 / RX 5700\nStorage: 100GB'),
 ('ghost','Ghost Of Tsushima','images/1.jpg','داستان بازی Ghost of Tsushima در سال 1274 جریان دارد که مغول‌ها به رهبری کوتان خان، نوه چنگیز خان، به سوشیمای ژاپن حمله کرده‌اند.','اکشن | ماجراجویی | تاریخی','9.2/10',
  JSON_ARRAY(
   'Ghost of Tsushima روایت حماسی جین ساکای است؛ سامورایی‌ای که برای نجات جزیره‌اش باید میان وفاداری به سنت‌ها و استفاده از روش‌های جدید مبارزه تصمیم بگیرد.',
@@ -98,7 +123,9 @@ VALUES
   'موسیقی و جلوه‌های بصری الهام‌گرفته از ژاپن کلاسیک'
  ),
  JSON_ARRAY('images/2.jpg','images/4.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-4670 / AMD Ryzen 3 1200\nRAM: 8GB\nGPU: GTX 970 / RX 470\nStorage: 75GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-6700 / AMD Ryzen 5 3600\nRAM: 16GB\nGPU: GTX 1070 / RX 5600 XT\nStorage: 75GB'),
 ('revill','Resident Evil Village','images/resident-evil-village.jpg','در فوریه 2021 ایتان وینترز و همسشر میا، توسط کریس ردفیلد به منطقه‌ای در شرق اروپا منتقل شده و زندگی خود را ادامه می‌دهند.','ترسناک | بقا | اکشن','9.0/10',
  JSON_ARRAY(
   'داستان بازی بعد از وقایع Resident Evil 7 ادامه پیدا می‌کند. ایتان وینترز که به همراه همسرش میا به منطقه‌ای آرام نقل مکان کرده‌اند، ناگهان با حمله وحشیانه مرموزی روبه‌رو می‌شوند. ایتان برای نجات دخترش «رُز» وارد دهکده‌ای تاریک و مرموز می‌شود.',
@@ -114,7 +141,9 @@ VALUES
   'صداگذاری و موسیقی فوق‌العاده'
  ),
  JSON_ARRAY('images/resident-evil-villagess.jpg','images/resident-evil-8-desktop-hd-wallpapers.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-7500 / AMD Ryzen 3 1200\nRAM: 8GB\nGPU: GTX 1050 Ti / RX 560\nStorage: 28GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-8700 / AMD Ryzen 5 3600\nRAM: 16GB\nGPU: GTX 1070 / RX 5700\nStorage: 28GB'),
 ('acsha','Assassin''s Creed Shadows','images/images.jpg','داستان بازی Assassin''s Creed Shadows در ژاپن فئودال قرار دارد ، به طور خاص از سال 1579 در دوره آزوچی مومویاما شروع می شود.','اکشن | مخفی‌کاری | تاریخی','9.1/10',
  JSON_ARRAY(
   'Assassins Creed Shadows در ژاپن فئودال جریان دارد و بازیکن می‌تواند با دو شخصیت مختلف، یک سامورایی و یک نینجا، داستان را دنبال کند.',
@@ -129,7 +158,9 @@ VALUES
   'گرافیک بسیار قوی'
  ),
  JSON_ARRAY('images/shadow.jpg','images/acsha1.jpg'),
- '#'),
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-6600K / AMD Ryzen 5 1400\nRAM: 8GB\nGPU: GTX 970 / RX 470\nStorage: 90GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-8700K / AMD Ryzen 7 2700X\nRAM: 16GB\nGPU: GTX 1070 / RX 5700\nStorage: 90GB'),
 ('cyber','Cyberpunk 2077','images/cyber.jpg','داستان بازی Cyberpunk 2077 در آینده و در شهری پر از جنایت به نام نایت سیتی جریان دارد که شرکت‌های بزرگ فراتر از قانون آن را کنترل می‌کنند.','نقش‌آفرینی | آینده‌نگر','8.9/10',
  JSON_ARRAY(
   'بازی در شهر آینده‌گرای Night City جریان دارد؛ شهری پر از فساد، قدرت، تکنولوژی و باندهای خلافکار. شما در نقش V هستید که در تلاش برای بقا و رسیدن به جایگاه خود در این شهر بی‌رحم است.',
@@ -145,4 +176,12 @@ VALUES
   'گرافیک نسل جدید با Ray Tracing'
  ),
  JSON_ARRAY('images/cyberpunk-2077.jpg','images/cyberpunk-2077s.jpg'),
- '#');
+ '#','game',
+ 'OS: Windows 10 64-bit\nCPU: Intel i5-3570K / AMD FX-8310\nRAM: 8GB\nGPU: GTX 780 / RX 470\nStorage: 70GB',
+ 'OS: Windows 10 64-bit\nCPU: Intel i7-4790 / AMD Ryzen 3 3200G\nRAM: 16GB\nGPU: GTX 1060 / RX 590\nStorage: 70GB'),
+('pad-pro','DualSense Pro','images/2.jpg','دسته حرفه‌ای مخصوص گیمرها با طراحی ارگونومیک و لرزش پیشرفته.','لوازم جانبی | کنترلر','--',
+ JSON_ARRAY('DualSense Pro یک دسته قدرتمند برای تجربه بهتر بازی‌هاست.'),
+ JSON_ARRAY('هپتیک پیشرفته','دکمه‌های قابل تنظیم','باتری قدرتمند'),
+ JSON_ARRAY('images/2.jpg','images/4.jpg'),
+ '#','product',
+ 'سازگار با PC و PS5\nاتصال USB-C / بلوتوث','اقلام داخل جعبه: دسته، کابل USB-C، دفترچه راهنما');

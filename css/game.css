@@ -22,7 +22,8 @@ body {
 .game-info {
   position: absolute;
   bottom: 30px;
-  left: 50px;
+  right: 50px;
+  left: auto;
 }
 
 .game-info h1 {
@@ -101,4 +102,57 @@ body {
   background: #00eaff;
   color: #000;
   box-shadow: 0 0 20px #00eaff;
+}
+
+.requirements {
+  width: 80%;
+  margin: 40px auto 60px;
+}
+
+.requirements h2 {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+  margin-bottom: 20px;
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.requirements-card {
+  background: rgba(12, 12, 12, 0.9);
+  border: 1px solid #1f1f1f;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.2);
+}
+
+.requirements-card h3 {
+  margin-bottom: 12px;
+  color: #00eaff;
+}
+
+.requirements-card ul {
+  padding-right: 18px;
+  line-height: 1.9;
+  color: #cfcfcf;
+}
+
+@media (max-width: 768px) {
+  .game-info {
+    left: 20px;
+    right: 20px;
+  }
+
+  .game-info h1 {
+    font-size: 28px;
+  }
+
+  .game-description,
+  .game-gallery,
+  .requirements {
+    width: 90%;
+  }
 }
