@@ -114,6 +114,7 @@ body {
   transform: translateY(-1px);
 }
 
+<<<<<<< HEAD
 .ghost-btn {
   display: inline-flex;
   align-items: center;
@@ -149,6 +150,8 @@ body {
   background: rgba(255, 71, 87, 0.35);
 }
 
+=======
+>>>>>>> main
 .admin-list {
   list-style: none;
   padding: 0;
@@ -167,6 +170,7 @@ body {
   border-radius: 10px;
 }
 
+<<<<<<< HEAD
 .item-meta {
   display: flex;
   flex-wrap: wrap;
@@ -184,6 +188,8 @@ body {
   margin: 0;
 }
 
+=======
+>>>>>>> main
 .badge {
   background: rgba(0, 234, 255, 0.15);
   color: #9cf4ff;
