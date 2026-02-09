@@ -114,6 +114,41 @@ body {
   transform: translateY(-1px);
 }
 
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  background: transparent;
+  font-size: 14px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.ghost-btn:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.danger-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 71, 87, 0.15);
+  color: #ffb3b3;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.danger-btn:hover {
+  background: rgba(255, 71, 87, 0.35);
+}
+
 .admin-list {
   list-style: none;
   padding: 0;
@@ -130,6 +165,23 @@ body {
   background: rgba(20, 20, 30, 0.6);
   padding: 10px 12px;
   border-radius: 10px;
+}
+
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.item-actions form {
+  margin: 0;
 }
 
 .badge {
