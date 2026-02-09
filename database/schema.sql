@@ -29,11 +29,8 @@ CREATE TABLE IF NOT EXISTS games (
 );
 
 INSERT INTO users (name, email, password_hash, role)
-<<<<<<< HEAD
 VALUES ('مدیر سایت','admin@gamezone.local','admin','admin');
-=======
-VALUES ('مدیر سایت','admin@gamezone.local','$2y$12$5B1CyBQrRk5twEv.EEAmRurV9dbxj//ssv97JDbOPlHkNTpIY5gNq','admin');
->>>>>>> af7bfc541f5b40a762a0fa301dbcb9fc4e91b778
+VALUES ('مدیر سایت','admin@gamezone.local','admin123','admin');
 
 INSERT INTO games (slug, title, cover, short_description, genre, rating, story, features, gallery, video_link, content_type, min_requirements, rec_requirements)
 VALUES

@@ -10,7 +10,6 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
-<<<<<<< HEAD
 
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS users (
@@ -59,8 +58,6 @@ try {
     if (!in_array('rec_requirements', $columns, true)) {
         $pdo->exec("ALTER TABLE games ADD COLUMN rec_requirements TEXT NULL");
     }
-=======
->>>>>>> af7bfc541f5b40a762a0fa301dbcb9fc4e91b778
 } catch (PDOException $e) {
     http_response_code(500);
     echo 'خطا در اتصال به پایگاه داده.';
