@@ -30,8 +30,33 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   max-width: var(--maxw);
-  margin: 50px auto;
+  margin: 25px auto 60px;
   padding: 20px;
+}
+
+.catalog-section {
+  max-width: var(--maxw);
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  color: #b86bff;
+  font-size: 26px;
+}
+
+.section-header p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
 }
 
 .game-card {
@@ -71,6 +96,12 @@ body {
   line-height: 1.6;
 }
 
+.empty-state {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 20px;
+}
+
 .more-btn {
   display: inline-block;
   padding: 8px 16px;
@@ -89,4 +120,11 @@ body {
   color: #fff;
   box-shadow: 0 0 12px rgba(138, 43, 226, 0.7);
   transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
