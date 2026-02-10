@@ -215,6 +215,23 @@ body {
   border-radius: 10px;
 }
 
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.item-actions form {
+  margin: 0;
+}
+
 .badge {
   background: rgba(0, 234, 255, 0.15);
   color: #9cf4ff;
