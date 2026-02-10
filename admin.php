@@ -117,6 +117,8 @@ if (isset($_GET['edit'])) {
             $editingItem['gallery'] = implode("\n", json_decode($editingItem['gallery'], true) ?: []);
         }
 
+        }  
+             }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $slug = strtolower(trim($_POST['slug'] ?? ''));
     $slug = preg_replace('/[^a-z0-9-]/', '-', $slug);
@@ -366,7 +368,6 @@ $items = $pdo->query('SELECT id, title, slug, content_type, created_at FROM game
     </div>
   </section>
 </main>
-
 <?php include 'includes/footer.php'; ?>
 
 </body>
