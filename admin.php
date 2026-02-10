@@ -318,6 +318,29 @@ $items = $pdo->query('SELECT id, title, slug, content_type, created_at FROM game
 
     <div class="admin-card">
       <h2>آخرین آیتم‌ها</h2>
+      <div class="admin-table">
+        <div class="admin-row admin-row--head">
+          <span>عنوان</span>
+          <span>نوع</span>
+          <span>اسلاگ</span>
+          <span>عملیات</span>
+        </div>
+        <?php foreach ($items as $item): ?>
+          <div class="admin-row">
+            <span class="cell-title"><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></span>
+            <span><span class="badge"><?php echo htmlspecialchars($item['content_type'], ENT_QUOTES, 'UTF-8'); ?></span></span>
+            <span class="muted">/<?php echo htmlspecialchars($item['slug'], ENT_QUOTES, 'UTF-8'); ?></span>
+            <span class="item-actions">
+              <a class="ghost-btn" href="admin.php?edit=<?php echo (int)$item['id']; ?>">ویرایش</a>
+              <form method="POST" onsubmit="return confirm('آیا از حذف این آیتم مطمئن هستید؟');">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="<?php echo (int)$item['id']; ?>">
+                <button type="submit" class="danger-btn">حذف</button>
+              </form>
+            </span>
+          </div>
+        <?php endforeach; ?>
+      </div>
       <ul class="admin-list">
         <?php foreach ($items as $item): ?>
           <li>

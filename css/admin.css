@@ -149,6 +149,11 @@ body {
   background: rgba(255, 71, 87, 0.35);
 }
 
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 .admin-list {
   list-style: none;
   padding: 0;
@@ -157,6 +162,49 @@ body {
   gap: 10px;
 }
 
+.admin-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: 12px;
+  align-items: center;
+  background: rgba(20, 20, 30, 0.6);
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.admin-row--head {
+  background: rgba(138, 43, 226, 0.2);
+  font-weight: 600;
+}
+
+.cell-title {
+  font-weight: 600;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.item-actions form {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .admin-row {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .admin-row--head {
+    display: none;
+  }
+
+  .item-actions {
+    justify-content: flex-start;
+  }
 .admin-list li {
   display: flex;
   flex-wrap: wrap;
