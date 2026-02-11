@@ -1,52 +1,18 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-  <meta charset="UTF-8">
-  <title>درباره ما | GameZone</title>
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
-</head>
-<body>
-
-<?php include "includes/header.php"; ?>
-
-<section class="about-section">
-  <div class="about-box">
-
-    <h1>درباره GameZone</h1>
-
-    <p>
-      <strong>GameZone</strong> یک وب‌سایت تخصصی برای عاشقان دنیای بازی است. ما اینجا جمع شدیم تا بهترین،
-      جدیدترین و دقیق‌ترین اطلاعات مربوط به بازی‌های ویدیویی را در اختیار گیمرهای ایرانی قرار بدهیم.
-    </p>
-
-    <p>
-      هدف ما ایجاد یک فضای حرفه‌ای، جذاب و قابل اعتماد است؛ جایی که کاربر بتواند
-      قبل از تجربه هر بازی، کاملاً با آن آشنا شود:  
-      از داستان گرفته تا تریلر، تصاویر، امتیازها و نقدها.
-    </p>
-
-    <p>
-      تیم ما از چند گیمر با تجربه تشکیل شده که سال‌هاست این دنیا رو زندگی می‌کنن ❤️  
-      ما هر روز تلاش می‌کنیم محتوایی تولید کنیم که شایسته مخاطبان واقعی گیم باشه.
-    </p>
-
-    <div class="about-features">
-      <h2>چرا GameZone ؟ 🎮</h2>
-      <ul>
-        <li>بررسی کامل و دقیق هر بازی</li>
-        <li>گالری تصاویر و ویدیوهای با کیفیت</li>
-        <li>تم حرفه‌ای مخصوص گیمرها</li>
-        <li>آپدیت روزانه و محتوای تازه</li>
-        <li>تیم متخصص و عاشق دنیای گیم</li>
+<?php $pageTitle = 'درباره ما | GameZone'; include __DIR__ . '/includes/header.php'; ?>
+<main class="container py-5">
+  <div class="row g-4 align-items-center">
+    <div class="col-lg-6">
+      <h1 class="fw-bold mb-3">درباره GameZone</h1>
+      <p class="text-secondary">GameZone یک پلتفرم محتوایی-مدیریتی برای معرفی بازی‌ها و محصولات گیمینگ است که با تمرکز روی طراحی حرفه‌ای، امنیت و توسعه‌پذیری بازطراحی شده است.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item bg-transparent text-light">طراحی واکنش‌گرا و مدرن با Bootstrap 5</li>
+        <li class="list-group-item bg-transparent text-light">سیستم احراز هویت کامل (ثبت‌نام، ورود، خروج)</li>
+        <li class="list-group-item bg-transparent text-light">پنل مدیریت برای ایجاد، ویرایش و حذف آیتم‌ها</li>
       </ul>
     </div>
-
+    <div class="col-lg-6">
+      <img class="img-fluid rounded-4 shadow" src="images/header-bg.jpg" alt="about gamezone">
+    </div>
   </div>
-</section>
-
-<?php include "includes/footer.php"; ?>
-
-</body>
-</html>
+</main>
+<?php include __DIR__ . '/includes/footer.php'; ?>

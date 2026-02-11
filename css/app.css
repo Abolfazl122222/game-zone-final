@@ -1,0 +1,16 @@
+body { font-family: "Vazirmatn", "Tahoma", sans-serif; }
+.hero {
+  min-height: 72vh;
+  background: linear-gradient(135deg, rgba(13,110,253,.18), rgba(13,202,240,.1)), url('../images/galaxy-in-space.jpg') center/cover;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.glass-card {
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(8px);
+}
+.game-card img {
+  height: 220px;
+  object-fit: cover;
+}
+.panel-card { border: 1px solid rgba(255,255,255,.09); }
