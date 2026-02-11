@@ -1,36 +1,24 @@
-<footer>
-  <div class="footer-content">
-
-    <div class="footer-box">
-      <h3>GameZone</h3>
-      <ul>
-        <li><a href="index.php">صفحه اصلی</a></li>
-        <li><a href="main.php">بازی‌ها</a></li>
-        <li><a href="about.php">درباره ما</a></li>
-      </ul>
+<footer class="py-5 mt-5 border-top border-secondary-subtle bg-black">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-md-5">
+                <h5 class="text-info">GameZone Professional</h5>
+                <p class="text-secondary mb-0">پلتفرم تخصصی معرفی بازی‌ها، محصولات گیمینگ و مدیریت محتوا با پنل حرفه‌ای.</p>
+            </div>
+            <div class="col-md-3">
+                <h6>دسترسی سریع</h6>
+                <ul class="list-unstyled small mb-0">
+                    <li><a class="link-light text-decoration-none" href="main.php">کاتالوگ بازی‌ها</a></li>
+                    <li><a class="link-light text-decoration-none" href="register.php">ایجاد حساب</a></li>
+                    <li><a class="link-light text-decoration-none" href="login.php">ورود کاربران</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <span class="small text-secondary">© <?php echo date('Y'); ?> GameZone. تمامی حقوق محفوظ است.</span>
+            </div>
+        </div>
     </div>
-
-    <div class="footer-box">
-      <h3>دسترسی سریع</h3>
-      <ul>
-        <li><a href="#">پرفروش‌ترین‌ها</a></li>
-        <li><a href="#">تخفیف‌ها</a></li>
-        <li><a href="#">پشتیبانی</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-box">
-      <h3>شبکه‌های اجتماعی</h3>
-      <ul>
-        <li><a href="#">اینستاگرام</a></li>
-        <li><a href="#">تلگرام</a></li>
-        <li><a href="#">یوتیوب</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2025 تمامی حقوق برای <span>GameZone</span> محفوظ است.
-  </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
