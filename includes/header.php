@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__ . '/auth.php';
 $user = current_user();
+$currentPage = basename($_SERVER['PHP_SELF'] ?? 'index.php');
+
+function nav_active(string $page, string $currentPage): string
+{
+    return $page === $currentPage ? 'active' : '';
+}
 ?>
 <!doctype html>
 <html lang="fa" dir="rtl">

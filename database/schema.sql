@@ -32,7 +32,11 @@ CREATE TABLE games (
 );
 
 INSERT INTO users (name, email, password_hash, role) VALUES
+<<<<<<< HEAD
+('مدیر سایت', 'admin@gamezone.local', '$2y$12$ARZHWNHjGiWVrbMKWki1jeM3m.U6kHDI2wmaYEqSUaKvbAEJ8Hpz.', 'admin');
+=======
 ('مدیر سایت', 'admin@gamezone.local', '$2y$10$8Vj8MTkqqzQhQ2U5GdeEI.SdM8e0B4I6QNT6lgfR2PrO7f2xEdxjW', 'admin');
+>>>>>>> f23af7109e33f030aba7b4998e70200ad56181e8
 -- رمز عبور پیش‌فرض: admin12345
 
 INSERT INTO games (slug, title, cover, short_description, genre, rating, story, features, gallery, video_link, content_type, min_requirements, rec_requirements) VALUES
