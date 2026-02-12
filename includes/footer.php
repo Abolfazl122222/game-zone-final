@@ -27,6 +27,10 @@
         </div>
     </div>
 </footer>
+<<<<<<< HEAD
 <script src="bootstrap.bundle.min.js"></script>
+=======
+<script src="js/app.js"></script>
+>>>>>>> a1554935710dca7903fc6fe2aaf173783bcebc5c
 </body>
 </html>
