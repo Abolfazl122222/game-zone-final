@@ -20,20 +20,25 @@ if ($item) {
 
 include __DIR__ . '/includes/header.php';
 ?>
+<?php if ($item): ?>
+  <section class="game-hero-header" style="--game-cover-image: url('<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>');">
+    <div class="container py-5 position-relative">
+      <span class="badge text-bg-info mb-3"><?php echo htmlspecialchars($item['content_type'] === 'product' ? 'محصول' : 'بازی', ENT_QUOTES, 'UTF-8'); ?></span>
+      <h1 class="display-5 fw-bold mb-2"><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
+      <p class="mb-0 text-light-emphasis">ژانر: <?php echo htmlspecialchars($item['genre'], ENT_QUOTES, 'UTF-8'); ?> · امتیاز: <?php echo htmlspecialchars($item['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
+    </div>
+  </section>
+<?php endif; ?>
 <main class="container py-5">
   <?php if (!$item): ?>
     <div class="alert alert-warning">آیتم مورد نظر پیدا نشد.</div>
     <a href="main.php" class="btn btn-outline-light">بازگشت به کاتالوگ</a>
   <?php else: ?>
     <div class="row g-4">
-      <div class="col-lg-5"><img class="img-fluid rounded-4 shadow" src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>"></div>
+      <div class="col-lg-5"><img class="img-fluid rounded-4 shadow game-cover-image" src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>"></div>
       <div class="col-lg-7">
-        <span class="badge text-bg-info mb-2"><?php echo htmlspecialchars($item['content_type'] === 'product' ? 'محصول' : 'بازی', ENT_QUOTES, 'UTF-8'); ?></span>
-        <h1 class="display-6 fw-bold"><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
-        <p class="text-secondary mb-2">ژانر: <?php echo htmlspecialchars($item['genre'], ENT_QUOTES, 'UTF-8'); ?></p>
-        <p class="text-secondary mb-4">امتیاز: <?php echo htmlspecialchars($item['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
         <?php foreach ($item['story'] as $paragraph): ?>
-          <p><?php echo $paragraph; ?></p>
+          <p><?php echo htmlspecialchars((string) $paragraph, ENT_QUOTES, 'UTF-8'); ?></p>
         <?php endforeach; ?>
       </div>
     </div>
