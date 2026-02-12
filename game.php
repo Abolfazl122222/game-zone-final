@@ -38,7 +38,7 @@ include __DIR__ . '/includes/header.php';
       <div class="col-lg-5"><img class="img-fluid rounded-4 shadow game-cover-image" src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>"></div>
       <div class="col-lg-7">
         <?php foreach ($item['story'] as $paragraph): ?>
-          <p><?php echo $paragraph; ?></p>
+          <p><?php echo htmlspecialchars((string) $paragraph, ENT_QUOTES, 'UTF-8'); ?></p>
         <?php endforeach; ?>
       </div>
     </div>
