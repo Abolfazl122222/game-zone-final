@@ -88,6 +88,7 @@ if ($editingId > 0) {
 }
 
 $items = $pdo->query('SELECT id, title, slug, content_type, created_at FROM games ORDER BY created_at DESC')->fetchAll();
+<<<<<<< HEAD
 $counts = $pdo->query("SELECT content_type, COUNT(*) AS total FROM games GROUP BY content_type")->fetchAll();
 $gameCount = 0;
 $productCount = 0;
@@ -99,6 +100,8 @@ foreach ($counts as $countRow) {
         $productCount = (int) $countRow['total'];
     }
 }
+=======
+>>>>>>> f23af7109e33f030aba7b4998e70200ad56181e8
 
 $pageTitle = 'پنل مدیریت | GameZone';
 include __DIR__ . '/includes/header.php';
@@ -111,12 +114,15 @@ include __DIR__ . '/includes/header.php';
     </div>
   </div>
 
+<<<<<<< HEAD
   <div class="row g-3 mb-4">
     <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">تعداد بازی‌ها</div><div class="h4 mb-0"><?php echo $gameCount; ?></div></div></div>
     <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">تعداد محصولات</div><div class="h4 mb-0"><?php echo $productCount; ?></div></div></div>
     <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">کل آیتم‌ها</div><div class="h4 mb-0"><?php echo count($items); ?></div></div></div>
   </div>
 
+=======
+>>>>>>> f23af7109e33f030aba7b4998e70200ad56181e8
   <div class="row g-4">
     <div class="col-lg-5">
       <div class="card bg-black text-light panel-card">
