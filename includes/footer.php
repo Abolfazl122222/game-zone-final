@@ -1,36 +1,32 @@
-<footer>
-  <div class="footer-content">
-
-    <div class="footer-box">
-      <h3>GameZone</h3>
-      <ul>
-        <li><a href="index.php">صفحه اصلی</a></li>
-        <li><a href="main.php">بازی‌ها</a></li>
-        <li><a href="about.php">درباره ما</a></li>
-      </ul>
+<footer class="py-5 mt-5 border-top border-secondary-subtle footer-gradient">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-5">
+                <h5 class="text-info mb-3">GameZone Professional</h5>
+                <p class="text-secondary mb-3">پلتفرم معرفی بازی و محصولات گیمینگ با طراحی حرفه‌ای، ساختار مرتب و پنل مدیریت کامل.</p>
+                <div class="d-flex gap-2">
+                    <span class="badge text-bg-dark border border-secondary-subtle">Bootstrap 5</span>
+                    <span class="badge text-bg-dark border border-secondary-subtle">PHP + PDO</span>
+                    <span class="badge text-bg-dark border border-secondary-subtle">Secure Auth</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <h6 class="mb-3">دسترسی سریع</h6>
+                <ul class="list-unstyled small mb-0 vstack gap-2">
+                    <li><a class="link-light text-decoration-none" href="main.php">کاتالوگ</a></li>
+                    <li><a class="link-light text-decoration-none" href="register.php">ثبت‌نام</a></li>
+                    <li><a class="link-light text-decoration-none" href="login.php">ورود</a></li>
+                </ul>
+            </div>
+            <div class="col-md-8 col-lg-4 text-md-end">
+                <h6 class="mb-3">ارتباط</h6>
+                <p class="text-secondary small mb-1"><i class="bi bi-envelope"></i> support@gamezone.local</p>
+                <p class="text-secondary small mb-3"><i class="bi bi-telephone"></i> 021-00000000</p>
+                <span class="small text-secondary">© <?php echo date('Y'); ?> GameZone. تمامی حقوق محفوظ است.</span>
+            </div>
+        </div>
     </div>
-
-    <div class="footer-box">
-      <h3>دسترسی سریع</h3>
-      <ul>
-        <li><a href="#">پرفروش‌ترین‌ها</a></li>
-        <li><a href="#">تخفیف‌ها</a></li>
-        <li><a href="#">پشتیبانی</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-box">
-      <h3>شبکه‌های اجتماعی</h3>
-      <ul>
-        <li><a href="#">اینستاگرام</a></li>
-        <li><a href="#">تلگرام</a></li>
-        <li><a href="#">یوتیوب</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2025 تمامی حقوق برای <span>GameZone</span> محفوظ است.
-  </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

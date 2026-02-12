@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body { font-family: "Vazirmatn", "Tahoma", sans-serif; }
 .hero {
   min-height: 72vh;
@@ -9,8 +10,57 @@ body { font-family: "Vazirmatn", "Tahoma", sans-serif; }
   border: 1px solid rgba(255,255,255,.1);
   backdrop-filter: blur(8px);
 }
+=======
+body {
+  font-family: "Vazirmatn", "Tahoma", sans-serif;
+  background: #0b0f19;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.82) !important;
+  backdrop-filter: blur(8px);
+}
+
+.hero {
+  min-height: 74vh;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(13, 202, 240, 0.18), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(13, 110, 253, 0.2), transparent 40%),
+    url('../images/galaxy-in-space.jpg') center/cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.panel-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+>>>>>>> d21b39b311223a6f10fb19cd9127c28970aa1a2a
 .game-card img {
   height: 220px;
   object-fit: cover;
 }
+<<<<<<< HEAD
 .panel-card { border: 1px solid rgba(255,255,255,.09); }
+=======
+
+.stat-card {
+  background: linear-gradient(135deg, rgba(13, 110, 253, .2), rgba(13, 202, 240, .1));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.auth-wrap {
+  min-height: calc(100vh - 250px);
+}
+
+.footer-gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .72));
+}
+>>>>>>> d21b39b311223a6f10fb19cd9127c28970aa1a2a

@@ -1,52 +1,29 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-  <meta charset="UTF-8">
-  <title>درباره ما | GameZone</title>
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
-</head>
-<body>
-
-<?php include "includes/header.php"; ?>
-
-<section class="about-section">
-  <div class="about-box">
-
-    <h1>درباره GameZone</h1>
-
-    <p>
-      <strong>GameZone</strong> یک وب‌سایت تخصصی برای عاشقان دنیای بازی است. ما اینجا جمع شدیم تا بهترین،
-      جدیدترین و دقیق‌ترین اطلاعات مربوط به بازی‌های ویدیویی را در اختیار گیمرهای ایرانی قرار بدهیم.
-    </p>
-
-    <p>
-      هدف ما ایجاد یک فضای حرفه‌ای، جذاب و قابل اعتماد است؛ جایی که کاربر بتواند
-      قبل از تجربه هر بازی، کاملاً با آن آشنا شود:  
-      از داستان گرفته تا تریلر، تصاویر، امتیازها و نقدها.
-    </p>
-
-    <p>
-      تیم ما از چند گیمر با تجربه تشکیل شده که سال‌هاست این دنیا رو زندگی می‌کنن ❤️  
-      ما هر روز تلاش می‌کنیم محتوایی تولید کنیم که شایسته مخاطبان واقعی گیم باشه.
-    </p>
-
-    <div class="about-features">
-      <h2>چرا GameZone ؟ 🎮</h2>
-      <ul>
-        <li>بررسی کامل و دقیق هر بازی</li>
-        <li>گالری تصاویر و ویدیوهای با کیفیت</li>
-        <li>تم حرفه‌ای مخصوص گیمرها</li>
-        <li>آپدیت روزانه و محتوای تازه</li>
-        <li>تیم متخصص و عاشق دنیای گیم</li>
-      </ul>
+<?php $pageTitle = 'درباره ما | GameZone'; include __DIR__ . '/includes/header.php'; ?>
+<main class="container py-5">
+  <div class="row g-4 align-items-center mb-4">
+    <div class="col-lg-6">
+      <span class="badge text-bg-info mb-2">About GameZone</span>
+      <h1 class="fw-bold mb-3">نسخه حرفه‌ای و یکپارچه</h1>
+      <p class="text-secondary">GameZone یک پروژه تمیز برای معرفی بازی‌ها و محصولات گیمینگ است که با Bootstrap بازطراحی شده و شامل ثبت‌نام، ورود، خروج و پنل مدیریت کامل می‌شود.</p>
+      <div class="row g-3 mt-1">
+        <div class="col-sm-6"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">UI</div><div class="fw-bold">Bootstrap RTL</div></div></div>
+        <div class="col-sm-6"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">Backend</div><div class="fw-bold">PHP + PDO</div></div></div>
+      </div>
     </div>
-
+    <div class="col-lg-6">
+      <img class="img-fluid rounded-4 shadow" src="images/header-bg.jpg" alt="about gamezone">
+    </div>
   </div>
-</section>
 
-<?php include "includes/footer.php"; ?>
-
-</body>
-</html>
+  <div class="card bg-black text-light panel-card">
+    <div class="card-body">
+      <h2 class="h5 mb-3">ویژگی‌های اصلی</h2>
+      <div class="row g-3">
+        <div class="col-md-4"><div class="p-3 border rounded-3 border-secondary-subtle h-100"><i class="bi bi-person-lock text-info"></i> سیستم احراز هویت استاندارد</div></div>
+        <div class="col-md-4"><div class="p-3 border rounded-3 border-secondary-subtle h-100"><i class="bi bi-speedometer2 text-info"></i> پنل مدیریت CRUD</div></div>
+        <div class="col-md-4"><div class="p-3 border rounded-3 border-secondary-subtle h-100"><i class="bi bi-grid text-info"></i> کاتالوگ فیلترپذیر</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+<?php include __DIR__ . '/includes/footer.php'; ?>

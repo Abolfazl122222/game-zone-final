@@ -1,24 +1,28 @@
-# game-zone-final
+# GameZone Final (Bootstrap Professional Edition)
 
-## راه‌اندازی سریع با WAMP
+نسخه بازطراحی‌شده پروژه با ظاهر حرفه‌ای مبتنی بر Bootstrap، احراز هویت کامل و پنل مدیریت.
 
-1. پروژه را داخل مسیر زیر قرار دهید:
-   ```
-   C:\wamp64\www\game-zone-final
-   ```
-2. در phpMyAdmin فایل زیر را Import کنید:
-   ```
-   database/schema.sql
-   ```
-3. در صورت نیاز اطلاعات اتصال دیتابیس را در فایل زیر تغییر دهید:
-   ```
-   includes/db.php
-   ```
-4. آدرس‌های اصلی:
-   - لیست بازی‌ها: `http://localhost/game-zone-final/main.php`
-   - پنل مدیریت: `http://localhost/game-zone-final/admin.php`
-   - صفحه ورود: `http://localhost/game-zone-final/login.php`
-   - نمایش جزئیات: `http://localhost/game-zone-final/game.php?game=slug`
+## امکانات
+- طراحی کامل رابط کاربری با Bootstrap 5 (RTL) و کاملاً واکنش‌گرا
+- ثبت‌نام، ورود و خروج کاربر با رمزنگاری امن (`password_hash` / `password_verify`)
+- فرم ثبت‌نام کامل‌تر (تکرار رمز عبور + اعتبارسنجی)
+- نقش‌بندی کاربر (`admin`, `user`)
+- پنل مدیریت حرفه‌ای برای ایجاد، ویرایش و حذف بازی/محصول
+- کاتالوگ با فیلتر نوع محتوا و جستجو
+- ساختار دیتابیس مرتب به‌همراه داده‌های اولیه کامل
 
-اطلاعات ورود پیش‌فرض مدیر:
-`admin@gamezone.local / admin123`
+## راه‌اندازی
+1. پروژه را داخل مسیر وب‌سرور (مثل `www` در WAMP/XAMPP) قرار دهید.
+2. فایل `database/schema.sql` را در phpMyAdmin ایمپورت کنید.
+3. در صورت نیاز تنظیمات دیتابیس را در `includes/db.php` تغییر دهید.
+
+## مسیرهای اصلی
+- خانه: `index.php`
+- کاتالوگ: `main.php`
+- ثبت‌نام: `register.php`
+- ورود: `login.php`
+- پنل مدیریت: `admin.php`
+
+## حساب مدیر پیش‌فرض
+- ایمیل: `admin@gamezone.local`
+- رمز عبور: `admin12345`
