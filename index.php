@@ -1,29 +1,50 @@
 <?php
 require_once __DIR__ . '/includes/db.php';
 $pageTitle = 'خانه | GameZone';
+
 $stats = $pdo->query("SELECT content_type, COUNT(*) AS total FROM games GROUP BY content_type")->fetchAll();
 $totals = ['game' => 0, 'product' => 0];
 foreach ($stats as $row) {
     $totals[$row['content_type']] = (int) $row['total'];
 }
+
+$featuredArticleStmt = $pdo->prepare("SELECT title, short_description, cover, rating, genre FROM games WHERE content_type = 'game' ORDER BY created_at DESC LIMIT 1");
+$featuredArticleStmt->execute();
+$featuredArticle = $featuredArticleStmt->fetch();
+
+$articlesStmt = $pdo->prepare("SELECT title, short_description, cover, rating, genre, created_at FROM games WHERE content_type = 'game' ORDER BY created_at DESC LIMIT 3");
+$articlesStmt->execute();
+$articles = $articlesStmt->fetchAll();
+
+$productsStmt = $pdo->prepare("SELECT title, short_description, cover, genre FROM games WHERE content_type = 'product' ORDER BY created_at DESC LIMIT 3");
+$productsStmt->execute();
+$products = $productsStmt->fetchAll();
+
 include __DIR__ . '/includes/header.php';
 ?>
 <section class="hero d-flex align-items-center">
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-xl-8">
+      <div class="col-xl-10">
         <div class="p-4 p-md-5 rounded-4 glass-card">
-          <span class="badge text-bg-info mb-3">GameZone Professional</span>
-          <h1 class="display-5 fw-bold mb-3">پلتفرم حرفه‌ای بازی و محصولات گیمینگ</h1>
-          <p class="lead text-light-emphasis mb-4">رابط کاربری تمیز، تجربه سریع و مدیریت کامل محتوا در یک ساختار حرفه‌ای.</p>
-          <div class="d-flex gap-2 flex-wrap mb-4">
-            <a href="main.php" class="btn btn-info btn-lg"><i class="bi bi-grid"></i> ورود به کاتالوگ</a>
-            <a href="register.php" class="btn btn-outline-light btn-lg"><i class="bi bi-person-plus"></i> ایجاد حساب</a>
-          </div>
-          <div class="row g-3">
-            <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><small class="text-secondary">بازی‌ها</small><div class="h4 mb-0"><?php echo $totals['game']; ?></div></div></div>
-            <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><small class="text-secondary">محصولات</small><div class="h4 mb-0"><?php echo $totals['product']; ?></div></div></div>
-            <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><small class="text-secondary">پنل</small><div class="h4 mb-0">کاربر / مدیریت</div></div></div>
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+              <img src="<?php echo htmlspecialchars($featuredArticle['cover'] ?? 'images/rdr2.jpg', ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid rounded-4 hero-cover" alt="تصویر کاور بازی شاخص" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+              <span class="badge text-bg-info mb-3">GameZone Magazine</span>
+              <h1 class="display-5 fw-bold mb-3"><?php echo htmlspecialchars($featuredArticle['title'] ?? 'پلتفرم حرفه‌ای بازی و محصولات گیمینگ', ENT_QUOTES, 'UTF-8'); ?></h1>
+              <p class="lead text-light-emphasis mb-4"><?php echo htmlspecialchars($featuredArticle['short_description'] ?? 'رابط کاربری تمیز، تجربه سریع و مدیریت کامل محتوا در یک ساختار حرفه‌ای.', ENT_QUOTES, 'UTF-8'); ?></p>
+              <div class="d-flex gap-2 flex-wrap mb-4">
+                <a href="main.php" class="btn btn-info btn-lg"><i class="bi bi-journal-text"></i> مطالعه بررسی</a>
+                <a href="main.php" class="btn btn-outline-light btn-lg"><i class="bi bi-bag"></i> مشاهده محصول</a>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><small class="text-secondary">بازی‌ها</small><div class="h4 mb-0"><?php echo $totals['game']; ?></div></div></div>
+                <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><small class="text-secondary">محصولات</small><div class="h4 mb-0"><?php echo $totals['product']; ?></div></div></div>
+                <div class="col-md-4"><div class="p-3 rounded-3 stat-card"><small class="text-secondary">امتیاز</small><div class="h4 mb-0"><?php echo htmlspecialchars($featuredArticle['rating'] ?? '--', ENT_QUOTES, 'UTF-8'); ?></div></div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -33,9 +54,77 @@ include __DIR__ . '/includes/header.php';
 
 <main class="container py-5">
   <div class="row g-4">
-    <div class="col-md-4"><div class="card bg-black text-light panel-card h-100"><div class="card-body"><h2 class="h5"><i class="bi bi-shield-check text-info"></i> امنیت استاندارد</h2><p class="text-secondary mb-0">ذخیره امن رمز عبور با <code>password_hash</code> و کنترل سطح دسترسی.</p></div></div></div>
-    <div class="col-md-4"><div class="card bg-black text-light panel-card h-100"><div class="card-body"><h2 class="h5"><i class="bi bi-layout-text-window-reverse text-info"></i> مدیریت ساده</h2><p class="text-secondary mb-0">افزودن، ویرایش و حذف بازی‌ها و محصولات در پنل یکپارچه.</p></div></div></div>
-    <div class="col-md-4"><div class="card bg-black text-light panel-card h-100"><div class="card-body"><h2 class="h5"><i class="bi bi-phone text-info"></i> واکنش‌گرا</h2><p class="text-secondary mb-0">نمایش حرفه‌ای در موبایل، تبلت و دسکتاپ.</p></div></div></div>
+    <div class="col-xl-8">
+      <section class="mb-4" aria-labelledby="article-title">
+        <h2 id="article-title" class="h4 mb-3 text-info">مجله بازی</h2>
+        <div class="row g-3">
+          <?php foreach ($articles as $article): ?>
+            <div class="col-md-6 col-xl-4">
+              <article class="card bg-black text-light panel-card h-100 article-card">
+                <img src="<?php echo htmlspecialchars($article['cover'], ENT_QUOTES, 'UTF-8'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                <div class="card-body">
+                  <span class="badge bg-primary-subtle text-info-emphasis mb-2"><?php echo htmlspecialchars($article['genre'], ENT_QUOTES, 'UTF-8'); ?></span>
+                  <h3 class="h6"><?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                  <p class="small text-secondary mb-2"><?php echo htmlspecialchars(mb_strimwidth($article['short_description'], 0, 100, '...'), ENT_QUOTES, 'UTF-8'); ?></p>
+                  <div class="small text-secondary d-flex justify-content-between">
+                    <span><i class="bi bi-star-fill text-warning"></i> <?php echo htmlspecialchars($article['rating'], ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span><?php echo htmlspecialchars(date('Y/m/d', strtotime($article['created_at'])), ENT_QUOTES, 'UTF-8'); ?></span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </section>
+
+      <section aria-labelledby="product-title">
+        <h2 id="product-title" class="h4 mb-3 text-info">ویترین محصولات</h2>
+        <div class="row g-3">
+          <?php foreach ($products as $product): ?>
+            <div class="col-md-6 col-xl-4">
+              <article class="card bg-black text-light panel-card h-100 product-card">
+                <img src="<?php echo htmlspecialchars($product['cover'], ENT_QUOTES, 'UTF-8'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+                <div class="card-body">
+                  <h3 class="h6"><?php echo htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                  <p class="small text-secondary mb-3"><?php echo htmlspecialchars(mb_strimwidth($product['short_description'], 0, 90, '...'), ENT_QUOTES, 'UTF-8'); ?></p>
+                  <ul class="small text-secondary mb-3 ps-3">
+                    <li><?php echo htmlspecialchars($product['genre'], ENT_QUOTES, 'UTF-8'); ?></li>
+                    <li>ارسال سریع</li>
+                    <li>گارانتی اصالت</li>
+                  </ul>
+                  <div class="d-flex gap-2">
+                    <a href="main.php" class="btn btn-info btn-sm">مشاهده</a>
+                    <button type="button" class="btn btn-outline-light btn-sm" aria-label="افزودن به علاقه‌مندی‌ها">علاقه‌مندی</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </section>
+    </div>
+
+    <aside class="col-xl-4">
+      <section class="card bg-black text-light panel-card h-100 leaderboard-card" aria-labelledby="leaderboard-title">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 id="leaderboard-title" class="h5 mb-0 text-info">Leaderboard کاربران</h2>
+            <button id="leaderboard-toggle" class="btn btn-sm btn-outline-light d-xl-none" type="button" aria-expanded="false" aria-controls="leaderboard-list">نمایش</button>
+          </div>
+
+          <label for="leaderboard-search" class="form-label small">جستجو (نام کاربری یا کشور)</label>
+          <input id="leaderboard-search" type="search" class="form-control form-control-sm bg-dark text-light border-secondary mb-3" placeholder="مثلاً Astro یا Japan" aria-label="جستجوی کاربر در لیدربرد">
+
+          <div class="btn-group w-100 mb-3" role="group" aria-label="مرتب‌سازی لیدربرد">
+            <button type="button" class="btn btn-sm btn-info" data-sort="rank">رتبه</button>
+            <button type="button" class="btn btn-sm btn-outline-info" data-sort="score">امتیاز</button>
+            <button type="button" class="btn btn-sm btn-outline-info" data-sort="name">نام</button>
+          </div>
+
+          <ol id="leaderboard-list" class="list-unstyled mb-0 leaderboard-list" aria-live="polite"></ol>
+        </div>
+      </section>
+    </aside>
   </div>
 </main>
 <?php include __DIR__ . '/includes/footer.php'; ?>

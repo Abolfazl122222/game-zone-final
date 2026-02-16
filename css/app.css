@@ -24,13 +24,20 @@ body {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
 }
 
+.hero-cover {
+  max-height: 360px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .panel-card {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
 }
 
-.game-card img {
-  height: 220px;
+.article-card img,
+.product-card img {
+  height: 180px;
   object-fit: cover;
 }
 
@@ -39,10 +46,90 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.leaderboard-list {
+  display: grid;
+  gap: 10px;
+}
+
+.leaderboard-item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.leaderboard-item.top {
+  border-color: rgba(255, 193, 7, 0.6);
+  box-shadow: 0 0 16px rgba(255, 193, 7, 0.25);
+  animation: topPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes topPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.leaderboard-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.leaderboard-meta {
+  min-width: 0;
+  flex: 1;
+}
+
+.leaderboard-user {
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-chip {
+  display: inline-block;
+  font-size: 0.65rem;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-inline-end: 5px;
+  background: rgba(13, 202, 240, 0.2);
+  color: #7fe7ff;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.status-dot.online { background: #20c997; }
+.status-dot.offline { background: #6c757d; }
+
+.leaderboard-collapsed {
+  display: none;
+}
+
 .auth-wrap {
   min-height: calc(100vh - 250px);
 }
 
 .footer-gradient {
   background: linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .72));
+}
+
+@media (max-width: 1199px) {
+  .leaderboard-list {
+    display: none;
+  }
+
+  .leaderboard-list.leaderboard-open {
+    display: grid;
+  }
 }
