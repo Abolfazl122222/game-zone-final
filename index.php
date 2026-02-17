@@ -84,10 +84,10 @@ include __DIR__ . '/includes/header.php';
             <?php $numericRating = (float) preg_replace('/[^0-9.]/', '', (string) ($article['rating'] ?? '0')); ?>
             <?php $starCount = max(1, min(5, (int) round($numericRating / 2))); ?>
 <<<<<<< HEAD
-            <div class="col-md-6 col-lg-4">
-=======
             <div class="col-md-6 col-xl-4">
->>>>>>> f3abb094ad1a63672441cff93e71fa7bd185f6e9
+=======
+            <div class="col-12 col-md-6 col-lg-4">
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
               <article class="card bg-black text-light panel-card h-100 article-card">
                 <img src="<?php echo htmlspecialchars($article['cover'], ENT_QUOTES, 'UTF-8'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
                 <div class="card-body">
@@ -114,10 +114,10 @@ include __DIR__ . '/includes/header.php';
         <div class="row g-3">
           <?php foreach ($products as $index => $product): ?>
 <<<<<<< HEAD
-            <div class="col-md-6 col-lg-4">
-=======
             <div class="col-md-6 col-xl-4">
->>>>>>> f3abb094ad1a63672441cff93e71fa7bd185f6e9
+=======
+            <div class="col-12 col-md-6 col-lg-4">
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
               <article class="card bg-black text-light panel-card h-100 product-card">
                 <img src="<?php echo htmlspecialchars($product['cover'], ENT_QUOTES, 'UTF-8'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
                 <div class="card-body">
@@ -159,7 +159,11 @@ include __DIR__ . '/includes/header.php';
             <?php foreach ($leaderboardUsers as $rank => $user): ?>
               <li class="leaderboard-item <?php echo $rank === 0 ? 'top' : ''; ?>"
                   data-id="<?php echo (int) $user['id']; ?>"
+<<<<<<< HEAD
                   data-username="<?php echo htmlspecialchars(strtolower($user['username']), ENT_QUOTES, 'UTF-8'); ?>"
+=======
+                  data-username="<?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?>"
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
                   data-score="<?php echo (int) $user['score']; ?>">
                 <strong class="text-info">#<?php echo $rank + 1; ?></strong>
                 <img class="leaderboard-avatar" src="<?php echo htmlspecialchars($user['avatar'], ENT_QUOTES, 'UTF-8'); ?>" alt="آواتار <?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">

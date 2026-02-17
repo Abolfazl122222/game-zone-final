@@ -22,7 +22,7 @@ if ($search !== '') {
 if ($conditions) {
     $sql .= ' WHERE ' . implode(' AND ', $conditions);
 }
-$sql .= ' ORDER BY id DESC';
+$sql .= ' ORDER BY id DESC, title ASC';
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
@@ -67,7 +67,7 @@ include __DIR__ . '/includes/header.php';
     <?php endif; ?>
 
     <?php foreach ($items as $item): ?>
-      <div class="col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="card bg-black text-light h-100 game-card panel-card">
           <img src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
           <div class="card-body d-flex flex-column">
