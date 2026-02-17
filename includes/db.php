@@ -4,10 +4,6 @@ $dbName = 'game_zone';
 $dbUser = 'root';
 $dbPass = '';
 
-/**
- * در صورت در دسترس نبودن MySQL، یک دیتابیس SQLite محلی می‌سازیم
- * تا صفحات سایت (و استایل‌ها) بدون خطای 500 بارگذاری شوند.
- */
 function bootstrap_sqlite(PDO $pdo): void
 {
     $pdo->exec('CREATE TABLE IF NOT EXISTS users (
