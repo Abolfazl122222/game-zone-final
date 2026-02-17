@@ -21,7 +21,10 @@ function nav_active(string $page, string $currentPage): string
 <body class="bg-dark text-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary-subtle sticky-top">
     <div class="container py-1">
-        <a class="navbar-brand fw-bold text-info" href="index.php">GameZone Pro</a>
+        <a class="navbar-brand fw-bold text-info d-flex align-items-center gap-2" href="index.php">
+            <i class="bi bi-controller"></i>
+            <span>GameZone Pro</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="تغییر منو">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,6 +38,12 @@ function nav_active(string $page, string $currentPage): string
                 <?php endif; ?>
             </ul>
             <div class="d-flex align-items-center gap-2 me-lg-3">
+                <button type="button" class="btn btn-icon" aria-label="جستجو">
+                    <i class="bi bi-search"></i>
+                </button>
+                <button type="button" class="btn btn-icon" aria-label="پروفایل کاربر">
+                    <i class="bi bi-person-circle"></i>
+                </button>
                 <?php if ($user): ?>
                     <span class="small text-secondary">سلام، <?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?></span>
                     <a class="btn btn-outline-light btn-sm" href="logout.php">خروج</a>
