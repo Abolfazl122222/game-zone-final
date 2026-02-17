@@ -115,30 +115,3 @@
       renderList();
     });
   });
-
-  // دکمه دنبال کردن برای هر کاربر با event delegation
-  leaderboardList.addEventListener('click', function (event) {
-    const target = event.target.closest('.follow-btn');
-    if (!target) return;
-
-    const userId = Number(target.dataset.id);
-    if (followed.has(userId)) {
-      followed.delete(userId);
-    } else {
-      followed.add(userId);
-    }
-
-    renderList();
-  });
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', function () {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      this.textContent = expanded ? 'نمایش' : 'بستن';
-      leaderboardList.classList.toggle('leaderboard-open');
-    });
-  }
-
-  renderList();
-})();

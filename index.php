@@ -24,18 +24,7 @@ $products = $productsStmt->fetchAll();
 $productPrices = ['2,490,000', '3,190,000', '1,850,000'];
 
 // داده‌های لیدربرد به صورت آرایه PHP تا در HTML رندر شوند.
-$leaderboardUsers = [
-    ['id' => 1, 'username' => 'AstraVex', 'score' => 99340, 'country' => 'USA', 'flag' => '🇺🇸', 'online' => true, 'avatar' => 'https://i.pravatar.cc/80?img=11'],
-    ['id' => 2, 'username' => 'KitsuneZero', 'score' => 98110, 'country' => 'Japan', 'flag' => '🇯🇵', 'online' => false, 'avatar' => 'https://i.pravatar.cc/80?img=12'],
-    ['id' => 3, 'username' => 'Frostbyte77', 'score' => 96700, 'country' => 'Canada', 'flag' => '🇨🇦', 'online' => true, 'avatar' => 'https://i.pravatar.cc/80?img=13'],
-    ['id' => 4, 'username' => 'NyxRogue', 'score' => 95335, 'country' => 'UK', 'flag' => '🇬🇧', 'online' => true, 'avatar' => 'https://i.pravatar.cc/80?img=14'],
-    ['id' => 5, 'username' => 'EchoVolt', 'score' => 94215, 'country' => 'Germany', 'flag' => '🇩🇪', 'online' => false, 'avatar' => 'https://i.pravatar.cc/80?img=15'],
-    ['id' => 6, 'username' => 'RaptorN1', 'score' => 93890, 'country' => 'Brazil', 'flag' => '🇧🇷', 'online' => true, 'avatar' => 'https://i.pravatar.cc/80?img=16'],
-    ['id' => 7, 'username' => 'LunaCipher', 'score' => 92540, 'country' => 'France', 'flag' => '🇫🇷', 'online' => false, 'avatar' => 'https://i.pravatar.cc/80?img=17'],
-    ['id' => 8, 'username' => 'StormSpectre', 'score' => 91870, 'country' => 'Australia', 'flag' => '🇦🇺', 'online' => true, 'avatar' => 'https://i.pravatar.cc/80?img=18'],
-    ['id' => 9, 'username' => 'PixelSage', 'score' => 90510, 'country' => 'Sweden', 'flag' => '🇸🇪', 'online' => true, 'avatar' => 'https://i.pravatar.cc/80?img=19'],
-    ['id' => 10, 'username' => 'NeoTitan', 'score' => 89125, 'country' => 'South Korea', 'flag' => '🇰🇷', 'online' => false, 'avatar' => 'https://i.pravatar.cc/80?img=20'],
-];
+
 
 // مرتب‌سازی اولیه از بیشترین امتیاز به کمترین امتیاز
 usort($leaderboardUsers, static function (array $a, array $b): int {
