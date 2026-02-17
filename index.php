@@ -23,14 +23,6 @@ $products = $productsStmt->fetchAll();
 // قیمت نمونه برای نمایش کارت‌های محصول (در صورت نبود قیمت در دیتابیس)
 $productPrices = ['2,490,000', '3,190,000', '1,850,000'];
 
-// داده‌های لیدربرد به صورت آرایه PHP تا در HTML رندر شوند.
-
-
-// مرتب‌سازی اولیه از بیشترین امتیاز به کمترین امتیاز
-usort($leaderboardUsers, static function (array $a, array $b): int {
-    return $b['score'] <=> $a['score'];
-});
-
 include __DIR__ . '/includes/header.php';
 ?>
 <section class="hero d-flex align-items-center">
@@ -120,40 +112,6 @@ include __DIR__ . '/includes/header.php';
       </section>
     </div>
 
-    <aside class="col-xl-4">
-      <section class="card bg-black text-light panel-card h-100 leaderboard-card" aria-labelledby="leaderboard-title">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 id="leaderboard-title" class="h5 mb-0 text-info">Leaderboard کاربران</h2>
-            <button id="leaderboard-toggle" class="btn btn-sm btn-outline-light d-xl-none" type="button" aria-expanded="false" aria-controls="leaderboard-list">نمایش</button>
-          </div>
-
-          <label for="leaderboard-search" class="form-label small">جستجو بر اساس نام کاربری</label>
-          <input id="leaderboard-search" type="search" class="form-control form-control-sm bg-dark text-light border-secondary mb-3" placeholder="مثلاً Astra" aria-label="جستجوی کاربر در لیدربرد">
-
-          <div class="btn-group w-100 mb-3" role="group" aria-label="مرتب‌سازی لیدربرد">
-            <button type="button" class="btn btn-sm btn-info" data-sort="score">امتیاز</button>
-            <button type="button" class="btn btn-sm btn-outline-info" data-sort="name">نام</button>
-          </div>
-
-          <ol id="leaderboard-list" class="list-unstyled mb-0 leaderboard-list" aria-live="polite">
-            <?php foreach ($leaderboardUsers as $rank => $user): ?>
-              <li class="leaderboard-item <?php echo $rank === 0 ? 'top' : ''; ?>"
-                  data-id="<?php echo (int) $user['id']; ?>"
-                  data-username="<?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?>"
-                  data-score="<?php echo (int) $user['score']; ?>">
-                <strong class="text-info">#<?php echo $rank + 1; ?></strong>
-                <img class="leaderboard-avatar" src="<?php echo htmlspecialchars($user['avatar'], ENT_QUOTES, 'UTF-8'); ?>" alt="آواتار <?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
-                <div class="leaderboard-meta">
-                  <div class="leaderboard-user"><?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?></div>
-                  <small class="text-secondary"><?php echo htmlspecialchars($user['flag'] . ' ' . $user['country'], ENT_QUOTES, 'UTF-8'); ?> · <?php echo number_format((int) $user['score']); ?> امتیاز</small>
-                  <span class="status-dot <?php echo $user['online'] ? 'online' : 'offline'; ?>" title="<?php echo $user['online'] ? 'online' : 'offline'; ?>"></span>
-                </div>
-                <button class="btn btn-sm btn-outline-light follow-btn" data-id="<?php echo (int) $user['id']; ?>" aria-label="دنبال کردن <?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?>">Follow</button>
-              </li>
-            <?php endforeach; ?>
-          </ol>
-        </div>
       </section>
     </aside>
   </div>
