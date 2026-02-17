@@ -1,16 +1,26 @@
 :root {
   --bg-main: #070a14;
   --bg-soft: #0d1324;
+<<<<<<< HEAD
   --neon: #5ea0ff;
   --neon-strong: #8f5bff;
+=======
+  --neon: #b16cff;
+  --neon-strong: #7a2bff;
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
   --text-soft: #9ea8c7;
 }
 
 body {
   font-family: "Vazirmatn", "Tahoma", sans-serif;
   background:
+<<<<<<< HEAD
     radial-gradient(circle at 10% 10%, rgba(94, 160, 255, 0.14), transparent 28%),
     radial-gradient(circle at 90% 0%, rgba(143, 91, 255, 0.15), transparent 32%),
+=======
+    radial-gradient(circle at 10% 10%, rgba(177, 108, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 90% 0%, rgba(122, 43, 255, 0.2), transparent 34%),
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
     var(--bg-main);
   color: #e6edff;
 }
@@ -28,8 +38,13 @@ body {
 .nav-link:hover,
 .nav-link.active,
 .navbar-brand:hover {
+<<<<<<< HEAD
   color: #b8d7ff !important;
   text-shadow: 0 0 12px rgba(94, 160, 255, 0.35);
+=======
+  color: #dfc6ff !important;
+  text-shadow: 0 0 12px rgba(177, 108, 255, 0.45);
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 }
 
 .btn-icon {
@@ -45,15 +60,25 @@ body {
 
 .btn-icon:hover {
   color: #fff;
+<<<<<<< HEAD
   border-color: rgba(94, 160, 255, 0.7);
   box-shadow: 0 0 12px rgba(94, 160, 255, 0.45);
+=======
+  border-color: rgba(177, 108, 255, 0.8);
+  box-shadow: 0 0 12px rgba(177, 108, 255, 0.5);
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 }
 
 .hero {
   min-height: 74vh;
   background:
+<<<<<<< HEAD
     radial-gradient(circle at 80% 20%, rgba(94, 160, 255, 0.2), transparent 35%),
     radial-gradient(circle at 20% 80%, rgba(143, 91, 255, 0.2), transparent 40%),
+=======
+    radial-gradient(circle at 80% 20%, rgba(177, 108, 255, 0.25), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(122, 43, 255, 0.24), transparent 40%),
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
     url('../images/galaxy-in-space.jpg') center/cover;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -86,8 +111,13 @@ body {
 .product-card:hover,
 .leaderboard-item:hover {
   transform: translateY(-4px);
+<<<<<<< HEAD
   border-color: rgba(94, 160, 255, 0.55);
   box-shadow: 0 16px 32px rgba(31, 57, 129, 0.35);
+=======
+  border-color: rgba(177, 108, 255, 0.65);
+  box-shadow: 0 16px 32px rgba(86, 35, 146, 0.38);
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 }
 
 .article-card img,
@@ -97,7 +127,11 @@ body {
 }
 
 .product-price {
+<<<<<<< HEAD
   color: #a8c7ff;
+=======
+  color: #d4b1ff;
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 }
 
 .stat-card {
@@ -121,8 +155,13 @@ body {
 }
 
 .leaderboard-item.top {
+<<<<<<< HEAD
   border-color: rgba(94, 160, 255, 0.75);
   box-shadow: 0 0 16px rgba(94, 160, 255, 0.28);
+=======
+  border-color: rgba(177, 108, 255, 0.8);
+  box-shadow: 0 0 16px rgba(177, 108, 255, 0.32);
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 }
 
 .leaderboard-avatar {
@@ -162,8 +201,13 @@ body {
 }
 
 .form-control:focus {
+<<<<<<< HEAD
   border-color: rgba(94, 160, 255, 0.75);
   box-shadow: 0 0 0 0.2rem rgba(94, 160, 255, 0.2);
+=======
+  border-color: rgba(177, 108, 255, 0.8);
+  box-shadow: 0 0 0 0.2rem rgba(177, 108, 255, 0.24);
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 }
 
 .auth-wrap {

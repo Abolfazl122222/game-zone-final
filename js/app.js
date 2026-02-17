@@ -36,20 +36,47 @@
   // داده‌ها از HTML (که با PHP ساخته شده) خوانده می‌شوند.
   const users = Array.from(leaderboardList.querySelectorAll('.leaderboard-item')).map((item) => ({
     id: Number(item.dataset.id),
+<<<<<<< HEAD
     username: item.dataset.username,
     score: Number(item.dataset.score),
     element: item
   }));
+=======
+    username: (item.dataset.username || '').trim(),
+    usernameLower: (item.dataset.username || '').trim().toLowerCase(),
+    score: Number(item.dataset.score),
+    element: item
+  }));
+
+  const byScore = (a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    const nameCompare = a.username.localeCompare(b.username, 'en', { sensitivity: 'base' });
+    if (nameCompare !== 0) return nameCompare;
+    return a.id - b.id;
+  };
+
+  const byName = (a, b) => {
+    const nameCompare = a.username.localeCompare(b.username, 'en', { sensitivity: 'base' });
+    if (nameCompare !== 0) return nameCompare;
+    if (b.score !== a.score) return b.score - a.score;
+    return a.id - b.id;
+  };
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 
   const renderList = () => {
     const query = (searchInput.value || '').trim().toLowerCase();
 
     const visibleUsers = users
+<<<<<<< HEAD
       .filter((user) => user.username.includes(query))
       .sort((a, b) => {
         if (currentSort === 'name') return a.username.localeCompare(b.username);
         return b.score - a.score;
       });
+=======
+      .filter((user) => user.usernameLower.includes(query))
+      .sort((a, b) => (currentSort === 'name' ? byName(a, b) : byScore(a, b)));
+>>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
 
     leaderboardList.innerHTML = '';
 
