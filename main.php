@@ -22,7 +22,7 @@ if ($search !== '') {
 if ($conditions) {
     $sql .= ' WHERE ' . implode(' AND ', $conditions);
 }
-$sql .= ' ORDER BY id DESC';
+$sql .= ' ORDER BY id DESC, title ASC';
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
@@ -30,7 +30,7 @@ $items = $stmt->fetchAll();
 
 include __DIR__ . '/includes/header.php';
 ?>
-<main class="container py-5">
+<main class="container py-5 catalog-shell">
   <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
     <div>
       <h1 class="h2 mb-1">کاتالوگ حرفه‌ای</h1>
@@ -41,7 +41,7 @@ include __DIR__ . '/includes/header.php';
     <?php endif; ?>
   </div>
 
-  <form method="get" class="card bg-black panel-card p-3 mb-4">
+  <form method="get" class="card bg-black panel-card glass-filter p-3 mb-4">
     <div class="row g-3 align-items-end">
       <div class="col-md-5">
         <label class="form-label">جستجو</label>
@@ -67,7 +67,7 @@ include __DIR__ . '/includes/header.php';
     <?php endif; ?>
 
     <?php foreach ($items as $item): ?>
-      <div class="col-md-6 col-xl-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="card bg-black text-light h-100 game-card panel-card">
           <img src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
           <div class="card-body d-flex flex-column">
@@ -75,7 +75,10 @@ include __DIR__ . '/includes/header.php';
               <h3 class="h5 mb-0"><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
               <span class="badge <?php echo $item['content_type'] === 'product' ? 'text-bg-secondary' : 'text-bg-info'; ?>"><?php echo htmlspecialchars($item['content_type'] === 'product' ? 'محصول' : 'بازی', ENT_QUOTES, 'UTF-8'); ?></span>
             </div>
-            <p class="small text-secondary mb-2"><?php echo htmlspecialchars($item['genre'], ENT_QUOTES, 'UTF-8'); ?> | ⭐ <?php echo htmlspecialchars($item['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
+            <p class="small text-secondary mb-2 d-flex justify-content-between align-items-center">
+              <span><?php echo htmlspecialchars($item['genre'], ENT_QUOTES, 'UTF-8'); ?></span>
+              <span class="text-warning"><i class="bi bi-star-fill"></i> <?php echo htmlspecialchars($item['rating'], ENT_QUOTES, 'UTF-8'); ?></span>
+            </p>
             <p class="text-secondary"><?php echo htmlspecialchars($item['short_description'], ENT_QUOTES, 'UTF-8'); ?></p>
             <a class="btn btn-info mt-auto" href="game.php?game=<?php echo urlencode($item['slug']); ?>">مشاهده جزئیات</a>
           </div>
