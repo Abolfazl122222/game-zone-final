@@ -37,11 +37,14 @@
   const users = Array.from(leaderboardList.querySelectorAll('.leaderboard-item')).map((item) => ({
     id: Number(item.dataset.id),
 <<<<<<< HEAD
+<<<<<<< HEAD
     username: item.dataset.username,
     score: Number(item.dataset.score),
     element: item
   }));
 =======
+=======
+>>>>>>> f0193c4b4b7819546b749509336b48dde2741f62
     username: (item.dataset.username || '').trim(),
     usernameLower: (item.dataset.username || '').trim().toLowerCase(),
     score: Number(item.dataset.score),
@@ -68,6 +71,7 @@
 
     const visibleUsers = users
 <<<<<<< HEAD
+<<<<<<< HEAD
       .filter((user) => user.username.includes(query))
       .sort((a, b) => {
         if (currentSort === 'name') return a.username.localeCompare(b.username);
@@ -77,6 +81,10 @@
       .filter((user) => user.usernameLower.includes(query))
       .sort((a, b) => (currentSort === 'name' ? byName(a, b) : byScore(a, b)));
 >>>>>>> 12d1e673516116321fd1008f3a1e1cb7736c43ce
+=======
+      .filter((user) => user.usernameLower.includes(query))
+      .sort((a, b) => (currentSort === 'name' ? byName(a, b) : byScore(a, b)));
+>>>>>>> f0193c4b4b7819546b749509336b48dde2741f62
 
     leaderboardList.innerHTML = '';
 
