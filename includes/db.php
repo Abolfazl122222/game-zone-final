@@ -4,7 +4,7 @@ $dbName = 'game_zone';
 $dbUser = 'root';
 $dbPass = '';
 
-function bootstrap_sqlite(PDO $pdo): void
+function initialize_sqlite(PDO $pdo): void
 {
     $pdo->exec('CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -93,5 +93,5 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
-    bootstrap_sqlite($pdo);
+    initialize_sqlite($pdo);
 }
