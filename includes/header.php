@@ -15,6 +15,11 @@ function nav_active(string $page, string $currentPage): string
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo htmlspecialchars($pageTitle ?? 'GameZone', ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="stylesheet" href="css/app.css">
+    <?php if (!empty($pageStyles) && is_array($pageStyles)): ?>
+        <?php foreach ($pageStyles as $styleSheet): ?>
+            <link rel="stylesheet" href="<?php echo htmlspecialchars($styleSheet, ENT_QUOTES, 'UTF-8'); ?>">
+        <?php endforeach; ?>
+    <?php endif; ?>
 </head>
 <body>
 <header class="site-header">

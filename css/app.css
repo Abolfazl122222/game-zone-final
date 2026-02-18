@@ -270,7 +270,7 @@ input, select {
   .stats-grid { grid-template-columns: 1fr; }
 }
 
-/* utility classes to keep old templates aligned without Bootstrap */
+/* utility classes for shared components */
 .py-5 { padding-top: 32px; padding-bottom: 32px; }
 .mb-0 { margin-bottom: 0; }
 .mb-2 { margin-bottom: 8px; }
@@ -332,3 +332,240 @@ input, select {
 .list-group-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
 .link-info { color: #cda3ff; }
 .badge { font-size: 12px; padding: 4px 9px; border-radius: 999px; background: rgba(157, 92, 255, 0.16); }
+
+
+.g-3 { gap: 12px; }
+.g-4 { gap: 16px; }
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-5 { margin-top: 20px; }
+.mb-1 { margin-bottom: 4px; }
+.p-3 { padding: 12px; }
+.p-4 { padding: 16px; }
+.p-lg-5 { padding: 20px; }
+@media (min-width: 980px) { .p-lg-5 { padding: 28px; } }
+.rounded-3 { border-radius: 12px; }
+.rounded-4 { border-radius: 16px; }
+.shadow { box-shadow: 0 14px 28px rgba(0, 0, 0, 0.32); }
+.img-fluid { width: 100%; height: auto; display: block; }
+.position-relative { position: relative; }
+.display-5 { font-size: clamp(28px, 4vw, 44px); }
+.fw-bold { font-weight: 700; }
+.h3 { font-size: 28px; }
+.h4 { font-size: 24px; }
+.h5 { font-size: 20px; }
+.h6 { font-size: 16px; }
+.bg-black { background: rgba(8, 6, 12, 0.78); }
+.bg-transparent { background: transparent; }
+.text-bg-info { background: rgba(127, 156, 255, 0.2); color: #e7ecff; }
+.text-info { color: #bda4ff; }
+.text-light-emphasis { color: #c8bdd8; }
+.border { border: 1px solid var(--border); }
+.border-secondary-subtle { border-color: rgba(194, 167, 246, 0.25); }
+.d-inline { display: inline; }
+
+.btn-info {
+  background: linear-gradient(135deg, #7c50f4, #5f2ace);
+  color: #fff;
+  border-color: transparent;
+}
+.btn-info:hover { filter: brightness(1.08); }
+.btn-outline-info { border-color: #8e6add; color: #d8c8ff; }
+.btn-outline-danger { border-color: #d76688; color: #ffb8c8; }
+.btn-outline-light { border-color: #d7cfea; color: #f8f5ff; }
+.btn-sm { padding: 6px 10px; font-size: 13px; }
+.btn-lg { padding: 11px 18px; font-size: 16px; }
+
+.auth-wrap { min-height: calc(100vh - 220px); }
+.vstack { display: grid; }
+
+.table-responsive { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; min-width: 620px; }
+.table th, .table td { padding: 10px; border-bottom: 1px solid var(--border); text-align: right; }
+.table-dark { background: rgba(9, 7, 14, 0.75); }
+.table-striped tbody tr:nth-child(even) { background: rgba(157, 92, 255, 0.06); }
+.align-middle td, .align-middle th { vertical-align: middle; }
+
+.game-hero-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.game-hero-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(8, 6, 12, 0.55), rgba(8, 6, 12, 0.88)), var(--game-cover-image) center / cover no-repeat;
+  z-index: -1;
+}
+.game-cover-image { border: 1px solid var(--border); }
+
+.bi { display: none; }
+
+/* ===== interaction polish: buttons, hovers, shadows ===== */
+a, .btn, .nav-link, .content-card, .panel-card, .stat-box, .tag, .badge, .list-group-item, .table tbody tr {
+  transition: all 0.24s ease;
+}
+
+a:hover {
+  color: #efe6ff;
+}
+
+.btn {
+  box-shadow: 0 8px 20px rgba(75, 30, 140, 0.24);
+  font-weight: 600;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(103, 53, 190, 0.35);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-outline:hover,
+.btn-outline-info:hover,
+.btn-outline-light:hover,
+.btn-outline-danger:hover {
+  background: rgba(157, 92, 255, 0.12);
+}
+
+.nav-link {
+  border: 1px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  border-color: rgba(157, 92, 255, 0.32);
+  box-shadow: 0 8px 18px rgba(102, 51, 184, 0.2);
+}
+
+.content-card,
+.panel-card,
+.stat-box,
+.hero-grid,
+.filter-box,
+.card {
+  box-shadow: 0 10px 24px rgba(6, 4, 10, 0.3);
+}
+
+.content-card:hover,
+.panel-card:hover,
+.stat-box:hover,
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 30px rgba(39, 18, 73, 0.42);
+  border-color: rgba(181, 140, 255, 0.4);
+}
+
+.tag:hover,
+.badge:hover {
+  background: rgba(157, 92, 255, 0.3);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  border-color: rgba(169, 130, 246, 0.72);
+  box-shadow: 0 0 0 3px rgba(121, 67, 223, 0.2);
+}
+
+.list-group-item {
+  border-radius: 10px;
+  margin-bottom: 8px;
+  padding: 12px;
+}
+
+.list-group-item:hover {
+  background: rgba(157, 92, 255, 0.12);
+  border-color: rgba(194, 167, 246, 0.45);
+}
+
+.table tbody tr:hover {
+  background: rgba(157, 92, 255, 0.1);
+}
+
+.footer-links a:hover {
+  color: #efe6ff;
+  text-shadow: 0 0 14px rgba(157, 92, 255, 0.6);
+}
+
+/* ===== details page polish (especially product pages) ===== */
+.item-details {
+  position: relative;
+}
+
+.intro-grid {
+  align-items: center;
+}
+
+.story-panel {
+  background: linear-gradient(180deg, rgba(20, 13, 32, 0.92), rgba(15, 10, 24, 0.86));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 14px 28px rgba(15, 8, 24, 0.5);
+}
+
+.story-text {
+  margin: 0 0 12px;
+  line-height: 1.95;
+  color: #ddd3ef;
+}
+
+.story-text:last-child {
+  margin-bottom: 0;
+}
+
+.gallery-image {
+  border: 1px solid rgba(194, 167, 246, 0.28);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+}
+
+.gallery-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 30px rgba(68, 29, 133, 0.35);
+}
+
+.requirements-section .card {
+  background: linear-gradient(180deg, rgba(16, 11, 24, 0.92), rgba(12, 8, 18, 0.84));
+}
+
+.product-details .game-cover-image {
+  border-color: rgba(126, 183, 255, 0.45);
+  box-shadow: 0 18px 30px rgba(35, 73, 128, 0.35);
+}
+
+.product-details .story-panel {
+  border-color: rgba(126, 183, 255, 0.42);
+  background: linear-gradient(180deg, rgba(16, 22, 38, 0.9), rgba(11, 16, 30, 0.84));
+}
+
+.product-details .h4,
+.product-details .h6 {
+  color: #cce4ff;
+}
+
+.product-card {
+  border-color: rgba(126, 183, 255, 0.34);
+  background: linear-gradient(180deg, rgba(16, 24, 38, 0.86), rgba(13, 19, 31, 0.8));
+}
+
+.product-card .tag {
+  background: rgba(106, 170, 255, 0.22);
+  color: #d7ebff;
+}
+
+.product-card:hover {
+  box-shadow: 0 18px 30px rgba(36, 78, 137, 0.35);
+}

@@ -68,7 +68,7 @@ include __DIR__ . '/includes/header.php';
 
     <div class="cards-grid">
       <?php foreach ($items as $item): ?>
-        <article class="content-card">
+        <article class="content-card <?php echo $item['content_type'] === 'product' ? 'product-card' : 'game-card'; ?>">
           <img src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
           <div class="card-body">
             <div class="meta-row">
