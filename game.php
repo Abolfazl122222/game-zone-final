@@ -8,6 +8,7 @@ $stmt->execute(['slug' => $slug]);
 $item = $stmt->fetch();
 
 if ($item) {
+    $isProduct = $item['content_type'] === 'product';
     $item['story'] = json_decode($item['story'], true) ?: [];
     $item['features'] = json_decode($item['features'] ?? '[]', true) ?: [];
     $item['gallery'] = json_decode($item['gallery'] ?? '[]', true) ?: [];
@@ -15,6 +16,7 @@ if ($item) {
     $item['rec_requirements'] = array_filter(array_map('trim', explode("\n", (string) ($item['rec_requirements'] ?? ''))));
     $pageTitle = $item['title'] . ' | GameZone';
 } else {
+    $isProduct = false;
     http_response_code(404);
 }
 
@@ -29,22 +31,22 @@ include __DIR__ . '/includes/header.php';
     </div>
   </section>
 <?php endif; ?>
-<main class="container py-5">
+<main class="container py-5 item-details <?php echo $isProduct ? 'product-details' : 'game-details'; ?>">
   <?php if (!$item): ?>
     <div class="alert alert-warning">آیتم مورد نظر پیدا نشد.</div>
     <a href="main.php" class="btn btn-outline-light">بازگشت به کاتالوگ</a>
   <?php else: ?>
-    <div class="row g-4">
+    <div class="row g-4 intro-grid">
       <div class="col-lg-5"><img class="img-fluid rounded-4 shadow game-cover-image" src="<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>"></div>
-      <div class="col-lg-7">
+      <div class="col-lg-7 story-panel">
         <?php foreach ($item['story'] as $paragraph): ?>
-          <p><?php echo $paragraph; ?></p>
+          <p class="story-text"><?php echo htmlspecialchars($paragraph, ENT_QUOTES, 'UTF-8'); ?></p>
         <?php endforeach; ?>
       </div>
     </div>
 
     <?php if ($item['features']): ?>
-      <section class="mt-5">
+      <section class="mt-5 feature-section">
         <h2 class="h4 mb-3">ویژگی‌ها</h2>
         <ul class="list-group">
           <?php foreach ($item['features'] as $feature): ?>
@@ -55,18 +57,18 @@ include __DIR__ . '/includes/header.php';
     <?php endif; ?>
 
     <?php if ($item['gallery']): ?>
-      <section class="mt-5">
+      <section class="mt-5 gallery-section">
         <h2 class="h4 mb-3">گالری</h2>
         <div class="row g-3">
           <?php foreach ($item['gallery'] as $image): ?>
-            <div class="col-md-6"><img class="img-fluid rounded-3" src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="gallery"></div>
+            <div class="col-md-6"><img class="img-fluid rounded-3 gallery-image" src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="gallery"></div>
           <?php endforeach; ?>
         </div>
       </section>
     <?php endif; ?>
 
     <?php if ($item['min_requirements'] || $item['rec_requirements']): ?>
-      <section class="mt-5">
+      <section class="mt-5 requirements-section">
         <h2 class="h4 mb-3">سیستم مورد نیاز</h2>
         <div class="row g-3">
           <div class="col-md-6">
