@@ -402,6 +402,7 @@ input, select {
 .game-cover-image { border: 1px solid var(--border); }
 
 .bi { display: none; }
+<<<<<<< HEAD
 
 /* ===== interaction polish: buttons, hovers, shadows ===== */
 a, .btn, .nav-link, .content-card, .panel-card, .stat-box, .tag, .badge, .list-group-item, .table tbody tr {
@@ -569,3 +570,5 @@ textarea:focus,
 .product-card:hover {
   box-shadow: 0 18px 30px rgba(36, 78, 137, 0.35);
 }
+=======
+>>>>>>> main
