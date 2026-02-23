@@ -20,10 +20,19 @@ if ($item) {
     http_response_code(404);
 }
 
+
+$coverForHero = '';
+if ($item) {
+    $coverForHero = (string) ($item['cover'] ?? '');
+    if ($coverForHero !== '' && !preg_match('#^(?:https?:)?//#i', $coverForHero)) {
+        $coverForHero = '/' . ltrim($coverForHero, '/');
+    }
+}
+
 include __DIR__ . '/includes/header.php';
 ?>
 <?php if ($item): ?>
-  <section class="game-hero-header" style="--game-cover-image: url('<?php echo htmlspecialchars($item['cover'], ENT_QUOTES, 'UTF-8'); ?>');">
+  <section class="game-hero-header" style="--game-cover-image: url('<?php echo htmlspecialchars($coverForHero, ENT_QUOTES, 'UTF-8'); ?>');">
     <div class="container py-5 position-relative">
       <span class="badge text-bg-info mb-3"><?php echo htmlspecialchars($item['content_type'] === 'product' ? 'محصول' : 'بازی', ENT_QUOTES, 'UTF-8'); ?></span>
       <h1 class="display-5 fw-bold mb-2"><?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
