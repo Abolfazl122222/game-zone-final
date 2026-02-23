@@ -14,7 +14,6 @@ function nav_active(string $page, string $currentPage): string
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo htmlspecialchars($pageTitle ?? 'GameZone', ENT_QUOTES, 'UTF-8'); ?></title>
-    <link rel="stylesheet" href="css/app.css">
     <?php if (!empty($pageStyles) && is_array($pageStyles)): ?>
         <?php foreach ($pageStyles as $styleSheet): ?>
             <link rel="stylesheet" href="<?php echo htmlspecialchars($styleSheet, ENT_QUOTES, 'UTF-8'); ?>">

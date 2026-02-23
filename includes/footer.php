@@ -1,5 +1,5 @@
 <footer class="ultra-footer">
-
+<link rel="stylesheet" href="css/footer.css">
   <div class="footer-glow-line"></div>
 
   <div class="ultra-container">
