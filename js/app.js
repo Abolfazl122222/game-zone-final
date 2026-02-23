@@ -1,26 +1,12 @@
 (function () {
-  const toggler = document.querySelector('.navbar-toggler');
-  const menu = document.querySelector('#mainNavbar');
+  const toggler = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('mainNavbar');
 
   if (!toggler || !menu) return;
 
-  const isShown = () => menu.classList.contains('show');
-
-  const setExpanded = (expanded) => {
-    toggler.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-  };
-
   toggler.addEventListener('click', function () {
-    menu.classList.toggle('show');
-    setExpanded(isShown());
-  });
-
-  menu.querySelectorAll('.nav-link').forEach((link) => {
-    link.addEventListener('click', function () {
-      if (window.innerWidth < 992 && isShown()) {
-        menu.classList.remove('show');
-        setExpanded(false);
-      }
-    });
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    menu.classList.toggle('open');
   });
 })();

@@ -4,9 +4,9 @@
     <div class="col-lg-6">
       <span class="badge text-bg-info mb-2">About GameZone</span>
       <h1 class="fw-bold mb-3">نسخه حرفه‌ای و یکپارچه</h1>
-      <p class="text-secondary">GameZone یک پروژه تمیز برای معرفی بازی‌ها و محصولات گیمینگ است که با Bootstrap بازطراحی شده و شامل ثبت‌نام، ورود، خروج و پنل مدیریت کامل می‌شود.</p>
+      <p class="text-secondary">GameZone یک پروژه تمیز برای معرفی بازی‌ها و محصولات گیمینگ است که با استایل اختصاصی بازطراحی شده و شامل ثبت‌نام، ورود، خروج و پنل مدیریت کامل می‌شود.</p>
       <div class="row g-3 mt-1">
-        <div class="col-sm-6"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">UI</div><div class="fw-bold">Bootstrap RTL</div></div></div>
+        <div class="col-sm-6"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">UI</div><div class="fw-bold">Custom RTL CSS</div></div></div>
         <div class="col-sm-6"><div class="p-3 rounded-3 stat-card"><div class="small text-secondary">Backend</div><div class="fw-bold">PHP + PDO</div></div></div>
       </div>
     </div>
