@@ -50,11 +50,7 @@ include __DIR__ . '/includes/header.php';
       <div class="col-lg-7 story-panel">
         <h2 class="story-title"><?php echo htmlspecialchars($isProduct ? 'معرفی محصول' : 'معرفی بازی', ENT_QUOTES, 'UTF-8'); ?></h2>
         <?php foreach ($item['story'] as $paragraph): ?>
-<<<<<<< HEAD
-          <p><?php echo htmlspecialchars((string) $paragraph, ENT_QUOTES, 'UTF-8'); ?></p>
-=======
           <p class="story-text"><?php echo htmlspecialchars($paragraph, ENT_QUOTES, 'UTF-8'); ?></p>
->>>>>>> 00aa7e5b0d3f3824ec3c9e8b30f478723b3af365
         <?php endforeach; ?>
       </div>
     </div>

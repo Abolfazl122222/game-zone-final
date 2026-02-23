@@ -14,11 +14,6 @@ function nav_active(string $page, string $currentPage): string
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo htmlspecialchars($pageTitle ?? 'GameZone', ENT_QUOTES, 'UTF-8'); ?></title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-=======
->>>>>>> 00aa7e5b0d3f3824ec3c9e8b30f478723b3af365
     <link rel="stylesheet" href="css/app.css">
     <?php if (!empty($pageStyles) && is_array($pageStyles)): ?>
         <?php foreach ($pageStyles as $styleSheet): ?>
